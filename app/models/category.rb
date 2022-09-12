@@ -1,4 +1,4 @@
 class Category < ActiveRecord::Base
     has_many :ingredients
-    has_many :CreateRecipes
+    has_many :recipes
 end

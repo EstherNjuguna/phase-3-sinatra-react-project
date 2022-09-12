@@ -1,19 +1,12 @@
-
-
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
   # Add your routes here
-   get '/' do
-   "Hello World"
-  end 
- 
+   
   get '/ingredients' do
-    ingredients = Ingredient.all
-    ingredients.to_json
-  end
-  
-  
+    Ingredient.all.to_json
+end
+ 
   post "/ingredients" do
     ingredients = Ingredient.create(
       name: params[:name],
@@ -29,10 +22,10 @@ end
 
 
   
-  get '/categories' do
-    categories = Category.all
-    categories.to_json include: :ingredients
-  end
+get '/categories' do
+  Category.all.to_json
+
+end
 
   get "/categories/:id" do
     category = Category.find_by_id(params[:id])
